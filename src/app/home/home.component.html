@@ -1,0 +1,51 @@
+<div class="conatiner">
+ <form [formGroup]="edit" >
+    <div class="form-group">
+        <div class="row">
+            <div class="col-3">
+                    <label>Firstname:</label>
+            </div>
+            <div class="col-9">
+                    <input type="text" formControlName="firstn" class="form-control">
+                
+                  </div>
+        
+        </div>
+    </div>
+        <div class="form-group">
+                <div class="row">
+                    <div class="col-3">
+                            <label>Email:</label>
+                    </div>
+                    <div class="col-9">
+                            <input type="text" formControlName="email" class="form-control">
+                            
+                          </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                        <div class="row">
+                            <div class="col-3">
+                                    <label>Password:</label>
+                            </div>
+                            <div class="col-9">
+                                    <input type="text" formControlName="passwrd" class="form-control">
+                                  
+                                  </div>
+                            </div>
+                        </div>
+                        <main class="form-group" > 
+                                <main formArrayName="addresses" *ngFor="let addr of edit.get('addresses').controls; let i=index">
+                                <div formGroupName="{{i}}" >address{{i}}
+                                <input formContorlName="city">
+                                <input formControlName="state">
+                                </div>
+                                </main>
+                                </main>
+            
+                                <button (click)="add()">Addmore</button>
+                                <button type="button" (click)="deleteRow(index)" >
+                                        Delete
+                                      </button>
+                        </form>
+                </div>

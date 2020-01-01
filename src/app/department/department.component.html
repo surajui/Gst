@@ -1,0 +1,18 @@
+
+<table class="table table-border">
+    <tr>
+        <th>Id</th>
+        <th>Course</th>
+        <th>Role</th>
+        <th>Views</th>
+        <!-- <th>Course</th> -->
+    </tr>
+    <tr *ngFor="let c of result">
+        <td>{{c.id}}</td>
+        <td>{{c.name}}</td>
+        <td>{{c.role}}</td>
+        <td>
+        <a [routerLink]="['/departmentdetails',c.id]"><button class="btn btn-primary">view</button></a>
+        </td>
+    </tr>
+</table>

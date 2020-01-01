@@ -1,0 +1,34 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "name": "suraj",
+      "role": "ui"
+    },
+    {
+      "id": 2,
+      "name": "Neelima",
+      "role": "ui"
+    },
+    {
+      "id": 3,
+      "name": "Varsha",
+      "role": "ui"
+    },
+    {
+      "id": 4,
+      "name": "Shirisha",
+      "role": "ui"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

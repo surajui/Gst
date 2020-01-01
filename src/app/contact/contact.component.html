@@ -1,0 +1,23 @@
+
+<div>
+    <input type="text" [(ngModel)]="search.name" placeholder="name" class="form-control">
+    <!-- <ul>
+      <li *ngFor="let user of users | filterBy: userFilter">{{ user.name }}</li>
+      <li *ngIf="(users | filterBy: userFilter).length === 0">No matching elements</li>
+    </ul> -->
+    <table class="table table-border">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+            <tr *ngFor="let user of users | filterBy:search">
+                <td>{{user.id}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div *ngIf="(users|filterBy:search).length===0">No match found</div>
+</div>  

@@ -1,0 +1,92 @@
+<div class="jumbotron">
+        <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                            <div class="sound-signal">
+                                        <input type="radio" (click)="changevalue(true)" name="soundsignal" id="soundsignal1" checked="checked">
+                                        <label for="soundsignal1">New Register</label>
+                                        <input type="radio"  (click)="changevalue(false)"  name="soundsignal" id="soundsignal2">
+                                        <label for="soundsignal2">TRN</label>
+                                      </div>
+                            <div *ngIf="isvalid">
+                            <form [formGroup]="edit" (onSubmit)="submit()">
+                                    <div class="form-group" class="text-left">
+                                      <label>I am a<span class="text-danger">*</span></label>
+                                      <select (change)="setvalue($event)" class="form-control" formControlName="selecte" placeholder="Ex-TaxPayer">
+                                        <option value=""></option>
+                                        <option value="TaxPayer">TaxPayer</option>
+                                        <option value="Gst">Gst</option>
+                                      </select>
+                                      
+                                </div>
+                                <div class="form-group text-left">
+                                        <label>Country<span class="text-danger">*</span></label>
+                                        <select class="form-control" (change)="onChangeCountry($event.target.value)" formControlName="country" >
+                                                <option *ngFor="let country of empList; let i = index" value="{{i}}">{{country.CountryName}}</option>
+                                              </select>  
+                                    </div>
+                     
+                                    <div class="form-group text-left">
+                                        <label>State/Ut<span class="text-danger">*</span></label>
+                                        <select class="form-control" formControlName="state" (change)="onChangeState($event.target.value)">
+                                                <option *ngIf="stateInfo == ''" value="-1">--Select State--</option>
+                                                <option *ngFor="let state of stateInfo; let j = index" value="{{j}}">{{state.StateName}}</option>
+                            
+                                        </select>
+                                    </div>
+                                    <div class="form-group text-left">
+                                            <label>District<span class="text-danger">*</span></label>
+                                            <select class="form-control" formControlName="district">
+                                                    <option *ngIf="cityInfo == ''" value="-1">--Select CIty--</option>
+                                                    <option *ngFor="let city of cityInfo; let k = index" value="{{k}}">{{city}}</option>
+                                          
+                                            </select>
+                                        </div>
+                                        <div [ngSwitch]="suraj">
+                                                <div class="form-group" *ngSwitchCase="'TaxPayer'">
+                                                        <div class="form-group text-left" *ngSwitchCase="'TaxPayer'">
+                                                                <label>Legal Name of Business (as pan)<span class="text-danger">*</span></label>
+                                                                <input type="text" class="form-control" formControlName="panname">
+                                                              </div>
+                                              </div>
+                                            </div>
+                                            <div [ngSwitch]="suraj">
+                                                    <div class="form-group" *ngSwitchCase="'Gst'">
+                                                            <div class="form-group text-left" *ngSwitchCase="'Gst'">
+                                                                    <label>Tan Number(as pan)<span class="text-danger">*</span></label>
+                                                                    <input type="text" class="form-control" formControlName="tan">
+                                                                  </div>
+                                                  </div>
+                                                </div>
+                                                
+                                       
+                                     </form>
+                                     </div>
+                                     <div *ngIf="!isvalid">
+                                                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                                                                <div class="form-group">
+                                                                <label>User Id:</label>
+                                                                <input type="email" class="form-control" formControlName="userid" id="userid">
+                                                                <div *ngIf="submitted && loginForm.controls.userid.errors" class="text-danger">
+                                                                  <div *ngIf="loginForm.controls.userid.errors.required">User is required</div>
+                                                                </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                <label>Password:</label>
+                                                                  <input type="password" class="form-control" formControlName="password" id="pwd">
+                                                                  <div *ngIf="submitted && loginForm.controls.password.errors" class="text-danger">
+                                                                    <div *ngIf="loginForm.controls.password.errors.required">Password is required</div>
+                                                                  </div>
+                                                                </div>    
+                                                                  <div class="form-group">
+                                                                <button class="btn btn-primary">Login</button>
+                                                                <div *ngIf="invalidLogin" class="text-danger">
+                                                                  <div>Invalid credentials.</div>
+                                                                </div>
+                                                                 </div>
+                                                              </form>    
+                                     </div>
+                    </div>
+                </div>
+            </div>
+</div>
